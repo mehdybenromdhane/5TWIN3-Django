@@ -25,6 +25,7 @@ class Event(models.Model):
     
     organisateur = models.ForeignKey(Person,on_delete=models.SET_NULL ,null=True)
     
+    participant = models.ManyToManyField(Person, through="Participants" , related_name="participant")
     def __str__(self):
         
         return self.title
@@ -34,5 +35,16 @@ class Event(models.Model):
 
     
     
+    
+class Participants(models.Model):
+    
+    event = models.ForeignKey(Event , on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    
+    participation_date=models.DateTimeField(auto_now_add=True)
+    
+    
+    class Meta:
+        unique_together= ['event','person']
 
     
