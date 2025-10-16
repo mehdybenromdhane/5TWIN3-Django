@@ -16,8 +16,15 @@
 
         <p class="card-text">Organisateur : <strong>{{e.organisateur}}</strong> </p>
         <p class="card-text">Date : {{e.evt_date}}</p>
+        <p class="card-text">Number of participants : {{e.nbr_participants}}</p>
 
     <a href="{% url 'detailsEvent' e.id  %}" class="btn btn-primary">Details</a>
+
+        <a href="{% url 'updateEvent' e.id  %}" class="btn btn-warning">update</a>
+
+
+                <a href="{% url 'deleteEvent' e.id  %}" class="btn btn-danger">Delete</a>
+
   </div>
 </div>
 

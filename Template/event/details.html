@@ -12,9 +12,9 @@
         <p class="card-text">Organisateur : <strong>{{e.organisateur}}</strong> </p>
         <p class="card-text">Date : {{e.evt_date}}</p>
 
-    <a href="#" class="btn btn-primary">Participer</a>
+    <a href="{% url 'join'  e.id   %}" class="btn btn-primary  {% if btn %} disabled {% endif %}">Participer</a>
 
-        <a href="#" class="btn btn-danger">Cancel</a>
+        <a href="{% url 'cancel' e.id %}" class="btn btn-danger {% if not btn %} disabled {% endif %}  ">Cancel</a>
 
   </div>
 </div>
