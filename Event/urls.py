@@ -18,5 +18,7 @@ urlpatterns = [
     path('delete/<int:pk>' , DeleteEvent.as_view(), name="deleteEvent"),
     path('join/<int:idEvent>', join , name="join"),
     
-    path('cancel/<int:idEvent>',cancel , name='cancel')
+    path('cancel/<int:idEvent>',cancel , name='cancel'),
+    
+    path('generate/', generate_description ,name="generate_description")
 ]

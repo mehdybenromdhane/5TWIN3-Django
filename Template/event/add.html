@@ -5,10 +5,71 @@
 
 <center>
 <h1>Add new Event</h1>
-<form action="{% url 'addEvent' %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'addEvent' %}" method="post" enctype="multipart/form-data" >
 
 
-    {{form.as_p }}
+    <table>
+
+        <tr>
+            <td><label for="">title</label></td>
+        <td>    {{form.title }}
+</td>
+    
+    </tr>
+            <tr>
+            <td><label for="">description</label></td>
+        <td>    {{form.description }}
+</td>
+
+<td><button  id="btn" class="btn btn-outline-warning">generate description</button></td>
+    
+    </tr>
+
+            <tr>
+            <td><label for="">image</label></td>
+        <td>    {{form.image }}
+</td>
+    
+    </tr>
+
+            <tr>
+            <td><label for="">category</label></td>
+        <td>    {{form.category }}
+</td>
+    
+    </tr>
+            <tr>
+            <td><label for="">event date</label></td>
+        <td>    {{form.evt_date }}
+</td>
+    
+    </tr>
+    </table>
+
+    <script>
+
+        document.getElementById('btn').addEventListener('click',
+        function(){
+
+            title= document.getElementById('id_title').value
+
+            
+            fetch("{% url 'generate_description' %}",{
+            method:'POST',
+            headers:{
+                'ContentType':'application/json',
+                'X-CSRFToken':'{{ csrf_token }}'
+            },
+            body:JSON.stringify({title:title})
+            }
+            ).then(response =>response.json()) 
+            .then(data =>{ document.getElementById('id_description').value = data.description})
+        }
+        
+        )
+
+    </script>
+
 
 {% csrf_token %}
 

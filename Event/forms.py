@@ -15,6 +15,6 @@ class EventForm(ModelForm):
         model=Event
         fields = '__all__'
         
-        exclude=('state','nbr_participants','participant',)
+        exclude=('state','nbr_participants','participant','organisateur',)
         
         widgets={'evt_date':DateInput()}
